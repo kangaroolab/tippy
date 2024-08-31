@@ -52,8 +52,8 @@
             margin-left: 5px;
         }
         .note-content {
-            width: calc(100% - 12px); /* Adjust width to fit the content area */
-            height: calc(100vh - 120px); /* Adjust height based on available space */
+            width: calc(100% - 12px);
+            height: calc(100vh - 120px);
             margin-top: 0;
             border: 1px solid #ccc;
             box-sizing: border-box;
@@ -72,6 +72,7 @@
         ul {
             list-style-type: none;
             padding-left: 0;
+            margin: 0;
         }
         li {
             margin-bottom: 5px;
@@ -83,7 +84,7 @@
             border: 1px solid #ccc;
             background-color: #fff;
             padding: 5px;
-            display: none; /* Hidden by default */
+            display: none;
             z-index: 1;
         }
         .menu a {
@@ -101,26 +102,26 @@
 </head>
 <body>
 <script>
-    const {div, button, ul, li, span, textarea, input, a} = van.tags;
+    const { div, button, ul, li, span, textarea, input, a } = van.tags;
 
     // State for the outline tree structure and notes
     const tree = van.state([]);
     const selectedNode = van.state(null);
-    const editingNodeIndex = van.state(null);  // Track the node being edited
-    const menuVisible = van.state(false);  // State to control menu visibility
+    const editingNodeIndex = van.state(null);
+    const menuVisible = van.state(false);
 
     // Function to add a new child node
     const addNode = (parentNode) => {
         const newNode = { name: `Node ${parentNode.children.length + 1}`, children: [], notes: [], expanded: true };
         parentNode.children.push(newNode);
-        tree.val = [...tree.val];  // Trigger re-render by reassigning the state
+        tree.val = [...tree.val];
     };
 
     // Function to remove a node safely
     const removeNode = (nodes, index) => {
         if (nodes && nodes.length > index) {
             nodes.splice(index, 1);
-            tree.val = [...tree.val];  // Trigger re-render
+            tree.val = [...tree.val];
         }
     };
 
@@ -130,7 +131,7 @@
     // Function to toggle expand/collapse state
     const toggleExpand = (node) => {
         node.expanded = !node.expanded;
-        tree.val = [...tree.val];  // Trigger re-render
+        tree.val = [...tree.val];
     };
 
     // Function to toggle the menu visibility
@@ -146,7 +147,7 @@
                 saveFile();
                 break;
         }
-        menuVisible.val = false;  // Hide menu after an action
+        menuVisible.val = false;
     };
 
     // Function to convert the tree state to a JSON string
@@ -154,18 +155,15 @@
 
     // Updated saveFile function with filename prompt
     const saveFile = () => {
-        // Prompt the user to enter a filename
         const filename = prompt("Enter filename for saving:", "outliner.json");
-        
-        // If a filename is provided, proceed with saving
         if (filename) {
             const blob = new Blob([getTreeData()], { type: "application/json" });
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = filename; // Use the filename provided by the user
+            a.download = filename;
             a.click();
-            URL.revokeObjectURL(url); // Clean up the object URL
+            URL.revokeObjectURL(url);
         }
     };
 
@@ -182,7 +180,7 @@
                     try {
                         const data = JSON.parse(event.target.result);
                         tree.val = data;
-                        selectedNode.val = null; // Clear selected node after opening file
+                        selectedNode.val = null;
                     } catch (error) {
                         alert("Failed to parse JSON file.");
                     }
@@ -199,13 +197,12 @@
             li(
                 div({
                         class: "node",
-                        style: `padding-left: ${depth * 20}px;`  // Indentation based on depth
+                        style: `padding-left: ${depth * 20}px;`
                     },
                     node.children.length > 0 ? a({
                             href: "#", class: "icon", title: node.expanded ? "Collapse" : "Expand",
                             onclick: (e) => (e.preventDefault(), toggleExpand(node))
                         },
-                        // Using innerHTML for expand/collapse icons
                         div({innerHTML: node.expanded ? `
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="6 9 12 15 18 9"></polyline>
@@ -214,27 +211,25 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>`
                         })) : "",
-                    span(" "), // Space between icon and node name
-                    node.notes.length > 0 ? span("📄") : "",  // Document icon if the node has notes
+                    span(" "),
+                    node.notes.length > 0 ? span("📄") : "",
                     editingNodeIndex.val === node ? input({
                         type: "text",
                         value: node.name,
-                        oninput: (e) => {
-                            node.name = e.target.value;  // Update the node name without re-render
-                        },
+                        oninput: (e) => node.name = e.target.value,
                         onblur: () => {
-                            editingNodeIndex.val = null;  // Exit edit mode on blur
-                            tree.val = [...tree.val];  // Trigger re-render after editing
+                            editingNodeIndex.val = null;
+                            tree.val = [...tree.val];
                         },
-                        onkeypress: (e) => {  // Exit edit mode on Enter key
+                        onkeypress: (e) => {
                             if (e.key === 'Enter') {
                                 editingNodeIndex.val = null;
-                                tree.val = [...tree.val];  // Trigger re-render after editing
+                                tree.val = [...tree.val];
                             }
                         }
                     }) : span(
                         {
-                            ondblclick: () => editingNodeIndex.val = node,  // Double-click to enter edit mode for the correct node
+                            ondblclick: () => editingNodeIndex.val = node,
                             onclick: () => selectNode(node),
                             style: () => selectedNode.val === node ? "font-weight: bold; cursor: pointer;" : "cursor: pointer;"
                         },
@@ -245,10 +240,11 @@
                             href: "#", class: "icon", title: "Add Child",
                             onclick: (e) => (e.preventDefault(), addNode(node))
                         }, "➕"),
-                        a({
+                        // Hide "Remove Node" option for the root node
+                        (tree.val[0] !== node) ? a({
                             href: "#", class: "icon", title: "Remove Node",
                             onclick: (e) => (e.preventDefault(), removeNode(node.children, index))
-                        }, "❌")
+                        }, "❌") : ""
                     ) : ""
                 ),
                 node.children.length > 0 && node.expanded ? renderTree(node.children, depth + 1) : null
@@ -258,16 +254,16 @@
 
     // Function to add a new note tab for the selected node
     const addNoteTab = () => {
-        if (!selectedNode.val) return;  // No node selected
+        if (!selectedNode.val) return;
         selectedNode.val.notes.push({ tabName: `Note ${selectedNode.val.notes.length + 1}`, content: "" });
-        selectedNode.val = { ...selectedNode.val };  // Ensure selectedNode state is updated
-        tree.val = [...tree.val];  // Trigger re-render of the tree
+        selectedNode.val = { ...selectedNode.val };
+        tree.val = [...tree.val];
     };
 
     // Function to render the right notes column
     const Notes = () => {
         const selectedTabIndex = van.state(0);
-        const editingTabIndex = van.state(-1);  // Keeps track of the editing tab
+        const editingTabIndex = van.state(-1);
 
         return () => {
             if (!selectedNode.val) {
@@ -277,9 +273,9 @@
             const notes = selectedNode.val.notes;
 
             return div(
-                div({class: "note-header"},
-                    span({style: "font-weight: bold; font-size: 16px;"}, selectedNode.val.name),
-                    button({onclick: addNoteTab}, "Add Note Tab")
+                div({ class: "note-header" },
+                    span({ style: "font-weight: bold; font-size: 16px;" }, selectedNode.val.name),
+                    button({ onclick: addNoteTab }, "Add Note Tab")
                 ),
                 div(
                     notes.length > 0 ?
@@ -288,10 +284,10 @@
                                 {
                                     class: () => selectedTabIndex.val === index ? "tab active-tab" : "tab",
                                     ondblclick: () => {
-                                        editingTabIndex.val = index;  // Double-click to enter edit mode
+                                        editingTabIndex.val = index;
                                     },
                                     onclick: () => {
-                                        if (editingTabIndex.val !== index) {  // Only change selection if not editing
+                                        if (editingTabIndex.val !== index) {
                                             selectedTabIndex.val = index;
                                         }
                                     }
@@ -299,19 +295,17 @@
                                 editingTabIndex.val === index ? input({
                                     type: "text",
                                     value: note.tabName,
-                                    oninput: (e) => {
-                                        note.tabName = e.target.value;  // Update the tab name without re-render
-                                    },
+                                    oninput: (e) => note.tabName = e.target.value,
                                     onblur: () => {
-                                        editingTabIndex.val = -1;  // Exit edit mode on blur
-                                        selectedNode.val.notes[index] = {...note};  // Reassign the note to trigger reactivity
-                                        selectedNode.val = { ...selectedNode.val };  // Re-render only after editing is complete
+                                        editingTabIndex.val = -1;
+                                        selectedNode.val.notes[index] = { ...note };
+                                        selectedNode.val = { ...selectedNode.val };
                                     },
-                                    onkeypress: (e) => {  // Exit edit mode on Enter key
+                                    onkeypress: (e) => {
                                         if (e.key === 'Enter') {
                                             editingTabIndex.val = -1;
-                                            selectedNode.val.notes[index] = {...note};  // Reassign the note to trigger reactivity
-                                            selectedNode.val = { ...selectedNode.val };  // Re-render only after editing is complete
+                                            selectedNode.val.notes[index] = { ...note };
+                                            selectedNode.val = { ...selectedNode.val };
                                         }
                                     }
                                 }) : note.tabName
@@ -320,16 +314,12 @@
                         : ""
                 ),
                 div(
-                    {
-                        class: "tab-container"
-                    },
-                    () => notes[selectedTabIndex.val] ? 
+                    { class: "tab-container" },
+                    () => notes[selectedTabIndex.val] ?
                         textarea({
                             class: "note-content",
                             value: notes[selectedTabIndex.val].content,
-                            oninput: (e) => {
-                                notes[selectedTabIndex.val].content = e.target.value;  // Update the note content without re-render
-                            }
+                            oninput: (e) => notes[selectedTabIndex.val].content = e.target.value
                         }) : ""
                 )
             );
@@ -340,39 +330,34 @@
     const handleMenuBlur = (e) => {
         setTimeout(() => {
             if (!document.querySelector(".menu:hover") && !e.target.closest(".menu")) {
-                menuVisible.val = false;  // Hide menu if not hovering over it and click outside
+                menuVisible.val = false;
             }
         }, 100);
     };
 
     // Main container to hold both columns
     const App = () => div(
-        {class: "container"},
-        div(
-            {class: "outline"},
-            // Menu icon and dropdown
+        { class: "container" },
+        div({ class: "outline" },
             div(
-                {
-                    style: "margin-bottom: 10px; position: relative;"
-                },
-                a({
-                    href: "#", onclick: (e) => (e.preventDefault(), toggleMenu())
-                }, 
-                div({innerHTML: `
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>`
-                })),
-                div({class: "menu", style: () => menuVisible.val ? "display: block;" : "display: none;"},
-                    a({onclick: () => handleMenuAction("Open")}, "Open"),
-                    a({onclick: () => handleMenuAction("Save")}, "Save")
+                { style: "margin-bottom: 10px; position: relative;" },
+                a({ href: "#", onclick: (e) => (e.preventDefault(), toggleMenu()) },
+                    div({ innerHTML: `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>`
+                    })
+                ),
+                div({ class: "menu", style: () => menuVisible.val ? "display: block;" : "display: none;" },
+                    a({ onclick: () => handleMenuAction("Open") }, "Open"),
+                    a({ onclick: () => handleMenuAction("Save") }, "Save")
                 )
             ),
             () => renderTree(tree.val)
         ),
-        div({class: "notes"}, Notes())
+        div({ class: "notes" }, Notes())
     );
 
     // Attach blur event handler to the document
