@@ -117,11 +117,15 @@
     };
 
     // Function to remove a node safely
-    const removeNode = (nodes, index) => {
-        if (nodes && nodes.length > index) {
-            nodes.splice(index, 1);
-            tree.val = [...tree.val];  // Trigger re-render
+    const removeNode = (nodeToRemove, parentNode = null) => {
+        if (!parentNode) {
+            // Remove the node from the root level
+            tree.val = tree.val.filter(node => node !== nodeToRemove);
+        } else {
+            // Remove the node from its parent's children
+            parentNode.children = parentNode.children.filter(node => node !== nodeToRemove);
         }
+        tree.val = [...tree.val];  // Trigger re-render
     };
 
     // Function to select a node
@@ -194,7 +198,7 @@
     };
 
     // Recursive function to render the tree nodes
-    const renderTree = (nodes, depth = 0) => ul(
+    const renderTree = (nodes, parentNode = null, depth = 0) => ul(
         nodes.map((node, index) =>
             li(
                 div({
@@ -247,11 +251,11 @@
                         }, "➕"),
                         a({
                             href: "#", class: "icon", title: "Remove Node",
-                            onclick: (e) => (e.preventDefault(), removeNode(node.children, index))
+                            onclick: (e) => (e.preventDefault(), removeNode(node, parentNode))
                         }, "❌")
                     ) : ""
                 ),
-                node.children.length > 0 && node.expanded ? renderTree(node.children, depth + 1) : null
+                node.children.length > 0 && node.expanded ? renderTree(node.children, node, depth + 1) : null
             )
         )
     );
@@ -323,7 +327,7 @@
                     {
                         class: "tab-container"
                     },
-                    () => notes[selectedTabIndex.val] ? 
+                    () => notes[selectedTabIndex.val] ?
                         textarea({
                             class: "note-content",
                             value: notes[selectedTabIndex.val].content,
@@ -357,7 +361,7 @@
                 },
                 a({
                     href: "#", onclick: (e) => (e.preventDefault(), toggleMenu())
-                }, 
+                },
                 div({innerHTML: `
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
