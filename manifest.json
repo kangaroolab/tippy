@@ -2,7 +2,7 @@
   "name": "Tippy Editor",
   "short_name": "tippy",
    "icons": [{
-      "src": "images/hello-icon-144.png",
+      "src": "images/tippy-icon-144.png",
       "sizes": "144x144",
       "type": "image/png"
     }],
