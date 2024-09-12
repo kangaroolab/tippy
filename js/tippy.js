@@ -120,7 +120,7 @@
     const getTreeData = () => JSON.stringify(tree.val, null, 2);
 
     // Updated saveFile function with filename prompt
-    const saveFile = () => {
+    const downlaodFile = () => {
         // Prompt the user to enter a filename
         const filename = prompt("Enter filename for saving:", tree.val[0].name + ".json");
         
@@ -135,6 +135,31 @@
             URL.revokeObjectURL(url); // Clean up the object URL
         }
     };
+
+    const saveFile = async () => {
+        try {
+            // Show the file save dialog
+            const handle = await window.showSaveFilePicker({
+                suggestedName: tree.val[0].name + ".json",
+                types: [{
+                    description: 'JSON Files',
+                    accept: { 'application/json': ['.json'] }
+                }]
+            });
+
+            // Create a writable stream
+            const writable = await handle.createWritable();
+
+            // Write the file
+            await writable.write(new Blob([getTreeData()], { type: "application/json" }));
+
+            // Close the file and write the contents to disk
+            await writable.close();
+        } catch (err) {
+            console.error('Error saving file:', err);
+        }
+    };
+
 
     // Function to handle file selection and read its content
     const openFile = () => {
