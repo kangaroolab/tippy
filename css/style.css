@@ -42,6 +42,45 @@
             padding-bottom: 5px;
             margin-bottom: 10px;
         }
+        /* Media query for mobile devices */
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column-reverse;
+            }
+        
+            .outline {
+                width: 100%;
+                border-right: none;
+                
+            }
+        
+            .notes {
+                width: 100%;
+                border-top: 1px solid #ccc;
+            }
+        
+            .drawer-open .outline {
+                    width: 95%;
+                    height: 90%;
+                }
+            .drawer-open .notes {
+                width: 95%;
+                height: auto;
+            }
+            .drawer-closed .outline {
+                width: 95%;
+                height: 10%;
+            }
+            .drawer-closed .notes {
+                width: 95%;
+                height: auto;
+            }
+            .drawer-button svg {
+            width: 24px;
+            height: 24px;
+            transform: rotate(-90deg);
+            }
+        }
         .tab-container {
             margin-top: 1px;
         }
