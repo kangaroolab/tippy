@@ -363,7 +363,7 @@
                                     editor.replaceWith(newNotebook);
                                 });
 
-                                editorContent.addEventListener('mouseup', () => {
+                                editorContent.addEventListener('pointerup', () => {
                                   const selection = window.getSelection();
                                   if (!selection.isCollapsed) {
                                     const range = selection.getRangeAt(0);
@@ -404,11 +404,11 @@
             {class: "outline"},
             div({class: "menu-container"},  // Menu container at the top
                 div({class: "menu", style: () => menuVisible.val ? "display: block;" : "display: none;"},
-                    a({onclick: () => handleMenuAction("Open")}, "Open"),
-                    a({onclick: () => handleMenuAction("Save")}, "Save")
+                    a({onpointerdown: () => handleMenuAction("Open")}, "Open"),
+                    a({onpointerdown: () => handleMenuAction("Save")}, "Save")
                 ),
                 a({
-                    href: "#", onclick: (e) => (e.preventDefault(), toggleMenu())
+                    href: "#", onpointerdown: (e) => (e.preventDefault(), toggleMenu())
                 },
                 div({
                   class: "menu-button",
