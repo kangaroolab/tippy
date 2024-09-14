@@ -217,11 +217,13 @@
                         onblur: () => {
                             editingNodeIndex.val = null;  // Exit edit mode on blur
                             tree.val = [...tree.val];  // Trigger re-render after editing
+                            selectedNode.val = {...node}; //Trigger re-render of note side to reflect node name change
                         },
                         onkeypress: (e) => {  // Exit edit mode on Enter key
                             if (e.key === 'Enter') {
                                 editingNodeIndex.val = null;
                                 tree.val = [...tree.val];  // Trigger re-render after editing
+                                selectedNode.val = {...node}; //Trigger re-render of note side to reflect node name change
                             }
                         }
                     }) : span(
