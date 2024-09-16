@@ -8,12 +8,30 @@
             // Function to run the code and update the output
             const runCode = () => {
                 try {
-                    const result = eval(code.val);
+                    let stmt = code.val;
+                    stmt = stmt.replace(/(\r\n|\n|\r)/gm, "");
+                    const result = scittle.core.eval_string(stmt);
                     output.val = result;
                 } catch (e) {
                     output.val = e.toString();
                 }
             };
+            
+            const pasteCode = (e) => {
+               e.preventDefault();
+              const clipboardData = (e.clipboardData || window.clipboardData).getData('text');
+              const lines = clipboardData.split('\n');
+              const fragment = document.createDocumentFragment();
+              lines.forEach(line => {
+                  const newDiv = document.createElement('div');
+                  newDiv.textContent = line;
+                  fragment.appendChild(newDiv);
+              });
+              document.getSelection().deleteFromDocument();
+              codeTextarea.appendChild(fragment);
+              code.val = codeTextarea.innerText;
+              updateLineNumbers(codeTextarea, lineNumbers);
+            }
 
             // Function to update line numbers
             const updateLineNumbers = (textarea, lineNumbers) => {
@@ -32,8 +50,10 @@
                     code.val = e.target.innerText;
                     updateLineNumbers(e.target, lineNumbers);
                 },
-                placeholder: "Write your code here...",
-                style: "white-space: pre-wrap;", // Preserve whitespace and line breaks
+                onpaste: e => {
+                  pasteCode(e);
+                },
+                placeholder: "Write your clojure code here...",
                 innerHTML: initialCode || ""
             });
             
