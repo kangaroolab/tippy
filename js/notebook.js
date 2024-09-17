@@ -17,27 +17,11 @@
                 }
             };
             
-            const pasteCode = (e) => {
-               e.preventDefault();
-              const clipboardData = (e.clipboardData || window.clipboardData).getData('text');
-              const lines = clipboardData.split('\n');
-              const fragment = document.createDocumentFragment();
-              lines.forEach(line => {
-                  const newDiv = document.createElement('div');
-                  newDiv.textContent = line;
-                  fragment.appendChild(newDiv);
-              });
-              document.getSelection().deleteFromDocument();
-              codeTextarea.appendChild(fragment);
-              code.val = codeTextarea.innerText;
-              updateLineNumbers(codeTextarea, lineNumbers);
-            }
-
             // Function to update line numbers
             const updateLineNumbers = (textarea, lineNumbers) => {
                 //const numberOfLines = textarea.value.split('\n').length;
-                //const numberOfLines = textarea.innerText.split('\n').length;
-                const numberOfLines = Math.max(textarea.getElementsByTagName("div").length, 1);
+                const numberOfLines = textarea.innerText.split('\n').length;
+                //const numberOfLines = Math.max(textarea.getElementsByTagName("div").length, 1);
                 lineNumbers.innerHTML = Array.from({ length: numberOfLines }, (_, i) => `<span>${i + 1}</span>`).join('');
             };
 
@@ -50,10 +34,7 @@
                     code.val = e.target.innerText;
                     updateLineNumbers(e.target, lineNumbers);
                 },
-                onpaste: e => {
-                  pasteCode(e);
-                },
-                placeholder: "Write your clojure code here...",
+                placeholder: "Write your code here...",
                 innerHTML: initialCode || ""
             });
             
