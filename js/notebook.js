@@ -1,3 +1,4 @@
+
         const { pre, br} = van.tags;
 
         // Notebook component
@@ -8,7 +9,7 @@
             // Function to run the code and update the output
             const runCode = () => {
                 try {
-                    let stmt = code.val;
+                    let stmt = document.getSelection().toString() || code.val;
                     stmt = stmt.replace(/(\r\n|\n|\r)/gm, "");
                     const result = scittle.core.eval_string(stmt);
                     output.val = result;
@@ -34,6 +35,9 @@
                     code.val = e.target.innerText;
                     updateLineNumbers(e.target, lineNumbers);
                 },
+                onpointerup: e => {
+                    e.stopPropagation(); // Prevents the event from bubbling up to the container
+                },
                 placeholder: "Write your code here...",
                 innerHTML: initialCode || ""
             });
@@ -46,7 +50,7 @@
                 div({ class: "code-container" }, lineNumbers, codeTextarea),
                 div(
                     { class: "output-container" },
-                    span({ class: "run-icon", onclick: runCode }, "▶️"),
+                    button({ class: "run-icon", onpointerup: e => {e.stopPropagation(); runCode();}}, "▶️"),
                     div({ class: "code-output", textContent: output })
                 )
             );
@@ -57,5 +61,4 @@
             const notebookContainer = div({ contenteditable: false }, Notebook());
             van.add(document.querySelector(".pell-content"), notebookContainer, br());
         };
-        
         
