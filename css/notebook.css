@@ -36,7 +36,7 @@
             font-size: 14px; /* Adjusted font size */
             padding: 5px; /* Ensure padding matches line numbers */
             display: block;
-            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            white-space: pre; /* Preserve whitespace and line breaks */
             overflow-x: scroll;
         }
         .codeTextarea:empty:before {
@@ -46,7 +46,7 @@
         }
         .output-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
         }
         .run-icon {
