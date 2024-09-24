@@ -10,6 +10,8 @@
     const toggleDrawer = () => drawerOpen.val = !drawerOpen.val;
     // Make selectedTabIndex as global state
     const selectedTabIndex = van.state(0);
+    // Make following accessible globally
+    globalThis.selectedNode = selectedNode;
     // Pell setting
     const pellSetting = {
       actions: [
@@ -62,7 +64,7 @@
           },
           {
             name: 'codeblock',
-            icon: '<b>C</b>',
+            icon: '<b>Cljs</b>',
             title: 'codeblock',
             result: () => addNotebook()
           }
@@ -358,13 +360,6 @@
                                 const actionBar = pellEditor.children[0];
                                 const editorContent = pellEditor.children[1];
                                 
-                                editorContent.querySelectorAll('.code-editor').forEach(editor => {
-                                    const codeContainer = editor.querySelector('.codeTextarea');
-                                    const initialCode = codeContainer ? codeContainer.innerHTML : "";
-                                    const newNotebook = Notebook(initialCode);
-                                    editor.replaceWith(newNotebook);
-                                });
-
                                 editorContent.addEventListener('pointerup', () => {
                                   const selection = window.getSelection();
                                   if (!selection.isCollapsed) {
