@@ -1,6 +1,9 @@
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Lato, Nuinto, sans-serif;
+            font-size: 18px;
+            line-height: 1.4;
+            background: #f5f5f5; /*or #F9F9F5 if a little yellow preferred */
         }
         .container {
             display: flex;
