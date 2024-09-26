@@ -175,7 +175,7 @@
       	        el.addEventListener('keydown', e => {
       	          if (e.which === 9) {
       	            const pos = caret() + tab.length;
-      	            const range = window.getSelection().getRangeAt(0);
+      	            const range = $this.shadowRoot.getSelection().getRangeAt(0);
       	            range.deleteContents();
       	            range.insertNode(document.createTextNode(tab));
       	            highlight(el);
