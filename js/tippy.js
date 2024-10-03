@@ -44,9 +44,9 @@
           {
             name: 'details',
             title: 'create details',
-            icon: '<span>&#x290B</span>',
+            icon: '<span>&#x25A4</span>',
             result: () => {
-              const detailSec = "<details><summary>update summary and detail here/below</summary></details><p>else continue...</p>"
+              const detailSec = "<details><summary>summary goes here</summary><p>detail goes here</p></details><p>else continue...</p>"
               pell.exec("insertHTML", detailSec)
             }
           },
