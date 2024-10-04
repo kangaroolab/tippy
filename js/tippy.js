@@ -42,11 +42,20 @@
             result: () => pell.exec('removeFormat')
           },
           {
-            name: 'details',
-            title: 'create details',
+            name: 'accordion',
+            title: 'create accordion',
             icon: '<span>&#x25A4</span>',
             result: () => {
-              const detailSec = "<details><summary>summary goes here</summary><p>detail goes here</p></details><p>else continue...</p>"
+              const detailSec = "<details class='accordion'><summary>summary goes here</summary><p>detail goes here</p></details><p>else continue...</p>"
+              pell.exec("insertHTML", detailSec)
+            }
+          },
+          {
+            name: 'bookmark',
+            title: 'add bookmark',
+            icon: '<span>&#x1F4D6</span>',
+            result: () => {
+              const detailSec = "<details class='bookmark'><summary>summary goes here</summary><p>detail goes here</p></details><p>else continue...</p>"
               pell.exec("insertHTML", detailSec)
             }
           },
