@@ -55,7 +55,7 @@
             title: 'add bookmark',
             icon: '<span>&#x1F4D6</span>',
             result: () => {
-              const detailSec = "<details class='bookmark'><summary>summary goes here</summary><p>detail goes here</p></details><p>else continue...</p>"
+              const detailSec = "<details class='bookmark'><summary>bookmark goes here</summary><p>description goes here</p></details><p>else continue...</p>"
               pell.exec("insertHTML", detailSec)
             }
           },
