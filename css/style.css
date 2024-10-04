@@ -214,8 +214,8 @@
         .drawer-closed .node-container {
             display: none; /* Hide node container when drawer is closed */
         }
-        details {
-          width: 85%;
+        .accordion {
+          width: 90%;
           margin: 10px 0;
           border: 1px solid #ccc;
           border-radius: 4px;
@@ -223,7 +223,7 @@
           background-color: #f9f9f9;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
-        summary {
+        .accordion summary {
           font-weight: bold;
           cursor: pointer;
           padding: 5px;
@@ -231,16 +231,63 @@
           border-radius: 4px;
           list-style: none;
         }
-        summary:hover {
+        .accordion summary:hover {
           background-color: #d9d9d9;
         }
-        details[open] summary {
+        .accordion[open] summary {
           background-color: #ccc;
         }
-        details p {
+        .accordion p {
           margin: 10px 0 0 !important;
           padding: 10px !important;
           background-color: #fff;
           border-radius: 4px;
           box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .bookmark {
+          width: 95%;
+          margin: 10px 0 !important;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+          font-size: 16px;
+        }
+        .bookmark summary {
+          font-weight: bold;
+          cursor: pointer;
+          padding: 10px;
+          background-color: #e9e9e9;
+          border-radius: 5px 5px 0 0;
+          list-style: none;
+          margin: 0;
+          display: flex;
+          align-items: center;
+        }
+
+        .bookmark summary::before {
+          content: '📖'; /* Unicode for bookmark icon */
+          font-size: 12px; /* Smaller size for the icon */
+          margin-right: 10px;
+        }
+
+        .bookmark summary:hover {
+          background-color: #d9d9d9;
+        }
+
+        .bookmark[open] summary {
+          background-color: #ccc;
+        }
+
+        .bookmark p {
+          margin: 0 !important;
+          padding: 10px;
+          background-color: #fff;
+          border-radius: 0 0 5px 5px;
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .bookmark p:not(:last-child) {
+          margin-bottom: 10px;
         }
