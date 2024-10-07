@@ -90,7 +90,7 @@
         .tab {
             display: inline-block;
             padding: 5px 10px;
-            margin: 0 2px;
+            margin: 0 4px 0 0;
             border: 1px solid #ccc;
             cursor: pointer;
             border-radius: 4px 4px 0 0;
@@ -139,7 +139,9 @@
           height: 100% !important; /*min-height: 200px; Ensure there's enough space for selection */
           position: relative; /* Position relative for popup positioning */
         }
-
+        .pell-content pre {
+          font-size: 14px;
+        }
         .pell-actionbar {
           position: absolute;
           display: none; /* Hidden by default */
