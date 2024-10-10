@@ -82,6 +82,7 @@
                         min-height: 16px;
                         font-family: monospace; /* Ensure consistent font */
                         font-size: 14px; /* Adjusted font size */
+                        white-space: pre-wrap; /* or pre */
                     }
               `;
 
