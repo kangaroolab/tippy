@@ -136,7 +136,7 @@
                 )
             );
             
-            const miniEditor = (el, highlight, tab = '    ') => {
+            const miniEditor = (el, highlight, tab = '  ') => {
       	        const caret = () => {
       	          const shadowRoot = $this.shadowRoot;
                   const selection = shadowRoot.getSelection();
