@@ -1,4 +1,4 @@
-    const {div, button, ul, li, span, textarea, input, a} = van.tags;
+    const {div, button, ul, li, span, textarea, input, a, label} = van.tags;
     let pellEditor = null;
     // State for the outline tree structure and notes
     const tree = van.state([]);
@@ -454,4 +454,22 @@
     tree.val = [{ name: 'Root Node', children: [], notes: [], expanded: true }];
 
     van.add(document.body, App());
+
+    // Add sliding console
+    const slide = () => {
+      return div(
+        input({type: "checkbox", id: "toggle", style: "display: none;"}),
+        label({for: "toggle", class: "open-btn"},
+          "☰",
+        ),
+        div({class: "slideout-panel"},
+          label({for: "toggle", class: "closebtn"},
+            "× Close",
+          ),
+          div({id: "slide-console"}),
+        )
+      )
+    }
+    
+    van.add(document.body, slide());
     
