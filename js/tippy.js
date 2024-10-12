@@ -466,7 +466,7 @@
           label({for: "toggle", class: "closebtn"},
             "× Close",
           ),
-          div({id: "slide-console"}),
+          div({id: "slide-console", style: "padding: 5px 5px;"}),
         )
       )
     }
