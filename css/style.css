@@ -293,3 +293,44 @@
         .bookmark p:not(:last-child) {
           margin-bottom: 10px;
         }
+        .slideout-panel {
+            position: fixed;
+            top: 0;
+            right: -33.33vw; /* Hidden by default and set to one-third of the viewport width */
+            width: 33.33vw; /* Make the width one-third of the viewport width */
+            height: 100%;
+            background-color: #f5f3ed;
+            color: black;
+            overflow-x: hidden;
+            transition: right 0.3s;
+            padding-top: 20px;
+            z-index: 1000; /* Ensure it's on top */
+        }
+        #toggle:checked ~ .slideout-panel {
+            right: 0;
+        }
+        #toggle:checked + .open-btn {
+            display: none;
+        }
+        #toggle:not(:checked) ~ .slideout-panel .closebtn {
+            display: none;
+        }
+        .open-btn {
+            font-size: 16px;
+            cursor: pointer;
+            background-color: lightgrey; /* Change color to light grey */
+            color: white;
+            border: none;
+            padding: 5px 0;
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 10px; /* Make it narrower */
+            text-align: center;
+            transition: 0.3s;
+            z-index: 2;
+        }
+      .closebtn {
+        padding: 5px 5px;
+      }
