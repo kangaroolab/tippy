@@ -331,6 +331,6 @@
             transition: 0.3s;
             z-index: 2;
         }
-      .closebtn {
-        padding: 5px 5px;
-      }
+          .closebtn {
+            padding: 5px 5px;
+          }
