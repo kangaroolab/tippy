@@ -1,6 +1,6 @@
         body {
             margin: 0;
-            font-family: Lato, Nuinto, sans-serif;
+            font-family: "Tiempos", Nunito, Lato;
             font-size: 18px;
             line-height: 1.4;
             background: #f5f5f5; /*or #F9F9F5 if a little yellow preferred */
@@ -331,6 +331,6 @@
             transition: 0.3s;
             z-index: 2;
         }
-        .closebtn {
+          .closebtn {
             padding: 5px 5px;
-        }
+          }
