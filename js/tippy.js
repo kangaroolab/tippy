@@ -289,10 +289,21 @@
             const notes = selectedNode.val.notes;
 
             return div(
-                div({class: "note-header"},
+                /*div({class: "note-header"},
                     span({style: "font-weight: bold; font-size: 18px;"}, selectedNode.val.name),
-                    button({onclick: addNoteTab}, "Add Note Tab")
-                ),
+                    span({id: "nav-container", style: "display: flex"}, 
+                      //button({onclick: addNoteTab}, "Add Note Tab"),
+                      div({class: "dropdown-nav"},
+                          ul(
+                            li(
+                              a({href: "#", onclick: addNoteTab},
+                                "Add Note",
+                              ),
+                            ),
+                          ),
+                        )
+                    )
+                ),*/
                 div(
                     notes.length > 0 ?
                         notes.map((note, index) =>
@@ -404,6 +415,24 @@
         }, 100);
     };
 
+    const Navigation = () => div(
+        div({class: "note-header"},
+              span({id: "misc-container"}, ),
+              span({id: "nav-container", style: "display: flex"}, 
+                //button({onclick: addNoteTab}, "Add Note Tab"),
+                div({class: "dropdown-nav"},
+                    ul(
+                      li(
+                        a({href: "#", onclick: addNoteTab},
+                          "Add Note",
+                        ),
+                      ),
+                    ),
+                  )
+              )
+          )
+      )
+
     const App = () => div(
         {class: () => drawerOpen.val ? "container drawer-open" : "container drawer-closed"},
         div(
@@ -444,7 +473,7 @@
                 () => renderTree(tree.val)
             )
         ),
-        div({class: "notes"}, Notes())
+        div({class: "notes"}, Navigation(), Notes())
     );
 
     // Attach blur event handler to the document
