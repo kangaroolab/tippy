@@ -293,6 +293,7 @@
         .bookmark p:not(:last-child) {
           margin-bottom: 10px;
         }
+        /* slideout panel */
         .slideout-panel {
             position: fixed;
             top: 0;
@@ -331,6 +332,51 @@
             transition: 0.3s;
             z-index: 2;
         }
-          .closebtn {
+        .closebtn {
             padding: 5px 5px;
+        }
+        /* Dropdown Menu Styles */
+        .dropdown-nav ul {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              display: flex;
+              font-size: 16px;
+          }
+        .dropdown-nav ul li {
+              position: relative;
+          }
+        .dropdown-nav ul li a 
+          {
+              display: block;
+              padding: 4px 10px;
+              text-decoration: none;
+              color: black;
+          }
+        .dropdown-nav ul li a:hover {
+              background-color: #f1f1f1;
+          }
+        .dropdown-nav .dropdown {
+              display: inline-block;
+          }
+        .dropdown-nav .dropdown-content {
+              display: none;
+              position: absolute;
+              background-color: #f9f9f9;
+              min-width: 160px;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              z-index: 1;
+              right: 0;
+          }
+        .dropdown-nav .dropdown-content a {
+              color: black;
+              padding: 4px 10px;
+              text-decoration: none;
+              display: block;
+          }
+        .dropdown-nav .dropdown-content a:hover {
+              background-color: #f1f1f1;
+          }
+        .dropdown-nav .dropdown:hover .dropdown-content {
+              display: block;
           }
