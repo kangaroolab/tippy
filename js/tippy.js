@@ -12,6 +12,7 @@
     const selectedTabIndex = van.state(0);
     // Make following accessible globally
     globalThis.selectedNode = selectedNode;
+    globalThis.selectedTabIndex = selectedTabIndex;
     // Pell setting
     const pellSetting = {
       actions: [
