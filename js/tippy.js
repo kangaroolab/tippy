@@ -423,10 +423,16 @@
                 //button({onclick: addNoteTab}, "Add Note Tab"),
                 div({class: "dropdown-nav"},
                     ul(
-                      li(
+                      /*li(
                         a({href: "#", onclick: addNoteTab},
                           "Add Note",
                         ),
+                      ),*/
+                      li({class: "dropdown"},
+                        a({href: "#", class: "dropbtn"}, "Note"),
+                        div({id: "noteMenu", class: "dropdown-content"},
+                          a({href: "#", onclick: addNoteTab}, "Add Note")
+                        )
                       ),
                     ),
                   )
