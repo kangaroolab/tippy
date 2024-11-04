@@ -11,6 +11,7 @@
     // Make selectedTabIndex as global state
     const selectedTabIndex = van.state(0);
     // Make following accessible globally
+    globalThis.tree = tree;
     globalThis.selectedNode = selectedNode;
     globalThis.selectedTabIndex = selectedTabIndex;
     // Pell setting
