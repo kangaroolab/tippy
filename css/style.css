@@ -18,10 +18,10 @@
             width: 70%;
         }
         .drawer-closed .outline {
-            width: 8%;
+            width: 4%;
         }
         .drawer-closed .notes {
-            width: 92%;
+            width: 96%;
         }
         .outline {
             padding: 10px;
