@@ -14,8 +14,8 @@
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
-                        border: 1px solid #ccc;
-                        padding: 10px;
+                        /* border: 1px solid #ccc; */
+                        padding: 5px;
                     }
                     .line-numbers {
                         border-right: 1px solid #ccc;
