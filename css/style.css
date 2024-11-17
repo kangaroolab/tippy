@@ -12,10 +12,10 @@
             transition: margin-left 0.3s, width 0.3s;
         }
         .drawer-open .outline {
-            width: 30%;
+            width: 25%;
         }
         .drawer-open .notes {
-            width: 70%;
+            width: 75%;
         }
         .drawer-closed .outline {
             width: 4%;
