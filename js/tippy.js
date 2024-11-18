@@ -4,7 +4,6 @@
     const tree = van.state([]);
     const selectedNode = van.state(null);
     const editingNodeIndex = van.state(null);  // Track the node being edited
-    const menuVisible = van.state(false);  // State to control menu visibility
     const drawerOpen = van.state(true);  // State to control drawer visibility
     // Function to toggle drawer visibility
     const toggleDrawer = () => drawerOpen.val = !drawerOpen.val;
@@ -113,9 +112,6 @@
         tree.val = [...tree.val];  // Trigger re-render
     };
 
-    // Function to toggle the menu visibility
-    const toggleMenu = () => menuVisible.val = !menuVisible.val;
-
     // Function to handle menu actions
     const handleMenuAction = (action) => {
         switch(action) {
@@ -126,7 +122,6 @@
                 saveFile();
                 break;
         }
-        menuVisible.val = false;  // Hide menu after an action
     };
 
     // Function to convert the tree state to a JSON string
@@ -408,15 +403,6 @@
         };
     };
 
-    // Function to handle menu blur
-    const handleMenuBlur = (e) => {
-        setTimeout(() => {
-            if (!document.querySelector(".menu:hover") && !e.target.closest(".menu")) {
-                menuVisible.val = false;  // Hide menu if not hovering over it and click outside
-            }
-        }, 100);
-    };
-
     const Navigation = () => div(
         div({class: "note-header"},
               span({id: "misc-container"}, ),
@@ -445,23 +431,23 @@
         {class: () => drawerOpen.val ? "container drawer-open" : "container drawer-closed"},
         div(
             {class: "outline"},
-            div({class: "menu-container"},  // Menu container at the top
-                div({class: "menu", style: () => menuVisible.val ? "display: block;" : "display: none;"},
+            div({class: "menu-container"},  // Menu container at the top      
+                a({
+                    href: "#"
+                    },
+                    div({
+                      class: "menu-button",
+                      innerHTML: `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>`})
+                ),
+                div({class: "menu"},
                     a({onpointerdown: () => handleMenuAction("Open")}, "Open"),
                     a({onpointerdown: () => handleMenuAction("Save")}, "Save")
                 ),
-                a({
-                    href: "#", onpointerdown: (e) => (e.preventDefault(), toggleMenu())
-                },
-                div({
-                  class: "menu-button",
-                  innerHTML: `
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>`
-                })),
                 button({
                     class: "drawer-button",
                     onclick: (e) => (e.preventDefault(), toggleDrawer()),
@@ -483,9 +469,6 @@
         ),
         div({class: "notes"}, Navigation(), Notes())
     );
-
-    // Attach blur event handler to the document
-    document.addEventListener('mousedown', handleMenuBlur);
 
     // Initialize the tree with a root node
     tree.val = [{ name: 'Root Node', children: [], notes: [], expanded: true }];
