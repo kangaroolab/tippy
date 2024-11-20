@@ -6,7 +6,8 @@ var filesToCache = [
   './js/main.js',
   './css/notebook.css',
   './js/notebook.js',
-  './js/tippy.js'
+  './js/tippy.js',
+  './bootstrap.cljs'
 ];
 
 /* Start the service worker and cache all of the app's content */
