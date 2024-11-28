@@ -11,7 +11,7 @@ a local first note app with interesting and convenient features (growing):
 - support of template (try example: download Sample.json, open it in the web app, and navigate to Setting/autorun then go to saveConfig note, click run button, and reload the webapp and use tag menu)
 - very customizable via clojurescript (see Sample.json for example...will elaborate more in future)
 
-![image info](./pictures/image.png)
+![screenshot](tippy.png)
 
 [try or install](https://kangaroolab.github.io/tippy/)
 
