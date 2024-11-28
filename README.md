@@ -6,7 +6,7 @@ a local first note app with interesting and convenient features (growing):
 - rich editor via pell (please highlight text to edit first and a panel will popup)
 - react both in destop and mobile via vanjs
 - support of clojurescript via scittle with basic code editing/highlighting functions
-- support of template (download Sample.json, open it, and navigate to Setting/autorun then goto saveConfig note, click run button, and reload the webapp and use tag menu)
+- support of template (try example: download Sample.json, open it in the web app, and navigate to Setting/autorun then go to saveConfig note, click run button, and reload the webapp and use tag menu)
 
 [try or install](https://kangaroolab.github.io/tippy/)
 
