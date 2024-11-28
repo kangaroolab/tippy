@@ -5,6 +5,7 @@ a local first note app with interesting and convenient features (growing):
 - very light and small (try to use minimum code only)
 - rich editor via pell (please highlight text to edit first and a panel will popup)
 - react both in destop and mobile via vanjs
+- support of copy/paste note within the same file, or export/import cross files (use menu)
 - support of clojurescript via scittle with basic code editing/highlighting functions
 - support of template (try example: download Sample.json, open it in the web app, and navigate to Setting/autorun then go to saveConfig note, click run button, and reload the webapp and use tag menu)
 
