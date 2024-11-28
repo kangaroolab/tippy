@@ -1,4 +1,5 @@
 # tippy
+
 a local first note app with interesting and convenient features (growing):
 - local first web app, which can run in browser or installed local
 - use outliner and tab/note organzing info
@@ -9,6 +10,8 @@ a local first note app with interesting and convenient features (growing):
 - support of clojurescript via scittle with basic code editing/highlighting functions
 - support of template (try example: download Sample.json, open it in the web app, and navigate to Setting/autorun then go to saveConfig note, click run button, and reload the webapp and use tag menu)
 - very customizable via clojurescript (see Sample.json for example...will elaborate more in future)
+
+![image info](./pictures/image.png)
 
 [try or install](https://kangaroolab.github.io/tippy/)
 
