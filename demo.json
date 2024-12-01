@@ -1,0 +1,80 @@
+[
+  {
+    "name": "demo",
+    "children": [
+      {
+        "name": "a quick start",
+        "children": [],
+        "notes": [
+          {
+            "tabName": "How to organize info",
+            "content": "<m-text1 shadow-content=\"<div class=&quot;u-body&quot; contenteditable=&quot;true&quot;>\n    <section class=&quot;u-align-center u-clearfix u-grey-5 u-section-2&quot; id=&quot;carousel_c98a&quot;>\n      <div class=&quot;u-clearfix u-sheet u-sheet-1&quot;>\n        <div class=&quot;u-clearfix u-gutter-100 u-layout-wrap u-layout-wrap-1&quot;>\n          <div class=&quot;u-layout&quot;>\n            <div class=&quot;u-layout-row&quot;>\n              <div class=&quot;u-container-style u-layout-cell u-size-30 u-layout-cell-1&quot;>\n                <div class=&quot;u-container-layout u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1&quot;>\n                  <h2 class=&quot;u-custom-font u-font-playfair-display u-text u-text-1&quot;>Tippy's way</h2>\n                </div>\n              </div>\n              <div class=&quot;u-container-style u-layout-cell u-size-30 u-layout-cell-2&quot;>\n                <div class=&quot;u-container-layout u-container-layout-2&quot;>\n                  <h5 class=&quot;u-custom-font u-font-playfair-display u-text u-text-2&quot;>focus on simplicity and flexibility</h5>\n                  <p class=&quot;u-text u-text-3&quot;>the way how to organize info within tippy is centered around outliner with node and note, which essentially provides unlimited combination how user likes to organize info. in addition, tippy supports customized format via rich text editing (popup menu) and templating (tag menu). this is actually an example of using one of the templates.</p>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n<a id=&quot;clone-link&quot; style=&quot;cursor: pointer; color: blue; text-decoration: none; font-size: 1.2em; text-align: left;&quot;>+</a>\n</div>\"></m-text1>"
+          },
+          {
+            "tabName": "How to quick get started",
+            "content": "<m-detail shadow-content=\"<div window=&quot;&quot;>\n  <div contenteditable=&quot;true&quot; class=&quot;main&quot;>\n    <h1>Quickly start tippy</h1>\n    <details>\n      <summary>Download tippy as a web app</summary>\n      <div class=&quot;detail-body&quot;>\n        <p>\n          Tippy can be used directly in browser but could be more convenient to install local as web app.&amp;nbsp;</p>\n      </div>\n    </details>\n    <details>\n      <summary>Download Sample.json</summary>\n      <div class=&quot;detail-body&quot;>\n        <p>Download Sample.json from tippy home at GitHub. Open it in tippy web app, navigate to Setting -&amp;gt; autorun, then go to saveConfig note, and click run button. It saves entire Sample.json in localStorage, which contains some template examples, user configuration, and scripts to initialize template gallery. Once it is saved, it will be picked up by next web app start. So please close tippy web app and restart it. You should find additional menu items under main menu on the left side, as well as under Note/Tag menu. This will stay at tippy web app level.</p>\n      </div>\n    </details>\n    <details>\n      <summary>Download demo.json</summary>\n      <div class=&quot;detail-body&quot;>\n        <p>\n          download demo.json (this document) from tippy site at GitHub.</p>\n      </div>\n    </details>\n    <details>\n      <summary>Open demo.json in tippy web app and follow through</summary>\n      <div class=&quot;detail-body&quot;>\n        <p>\n          demo.json is created within tippy web app as an example illustrating various features of tippy. it is a great way to try and play around.</p>\n      </div>\n    </details>\n    <a id=&quot;clone-link&quot; style=&quot;cursor: pointer; color: blue; text-decoration: none; font-size: 1.2em; text-align: left;&quot;>+</a>\n  </div>\n</div>\"></m-detail>"
+          }
+        ],
+        "expanded": true
+      },
+      {
+        "name": "user",
+        "children": [
+          {
+            "name": "basic",
+            "children": [],
+            "notes": [
+              {
+                "tabName": "Rich text editing",
+                "content": "<div>Every note is a rich text editing panel itself, which when saved contains all the text and style.</div><div>To enable rich text, simply highlight the text to be edited and a panel will popup.</div><div><img src=\"https://raw.githubusercontent.com/kangaroolab/tippy/refs/heads/main/images/pell.png\"></div><div><span style=\"font-weight: bold;\">Headings:</span><br><ul><h1><ul><li>H1 headers</li></ul></h1><h2><ul><li>H2 headers</li></ul></h2></ul><span style=\"font-weight: bold;\">Text Formatting:</span><br><ol><ul><li><span style=\"font-weight: bold;\">Bold</span></li><li><span style=\"font-style: italic;\">Italic</span></li><li><span style=\"text-decoration-line: line-through;\">Strikethrough</span></li><li><span style=\"text-decoration-line: underline;\">Underscore</span></li><li><span style=\"background-color: rgb(218, 247, 166);\">Highlight</span></li></ul><blockquote><ul><li>Quote</li></ul></blockquote></ol><span style=\"font-weight: bold;\">Code Block:</span><br><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><pre>(println \"hello world\")</pre></blockquote><span style=\"font-weight: bold;\">Link and Image:</span></div><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><ul><li><a href=\"https://www.google.com\">www.google.com</a>&nbsp;</li></ul><div><ul><li><img src=\"https://raw.githubusercontent.com/kangaroolab/tippy/refs/heads/main/images/tippy-icon-144.png\"></li></ul></div></blockquote><div><span style=\"font-weight: bold;\">Accordion:</span></div><details class=\"accordion\"><summary>summary goes here</summary><p>detail goes here</p></details><div>else continue...</div><div><br></div><div><span style=\"font-weight: bold;\">Bookmark:</span></div><div><details class=\"bookmark\"><summary>bookmark goes here</summary><p>description goes here</p></details><p>else continue...&nbsp;</p><p><br></p><span style=\"font-weight: bold;\">List:</span><br><ul><ul><li>Ordered list:</li></ul><ol><ol><li>first item</li><li>second item</li><li>third item</li></ol></ol><ul><li>Unordered list:</li><ul><li>item one</li><li>item two</li><li>item three</li></ul></ul></ul></div><div>you can try others to play around and get familiar, for example horizontal line, indent left/right, paragraph, remove format etc. last Cljs is to edit/run clojurescript in tippy, which we will cover in detail in advanced section.</div>"
+              },
+              {
+                "tabName": "Copy/paste text",
+                "content": "<div>to copy text only, please use ctrl-shift-v</div><div><br></div><div>to copy text including style (e.g. if you like to copy/paste a web page), please use ctrl-v</div>"
+              },
+              {
+                "tabName": "Copy/paste note",
+                "content": "<div>under Note menu:</div><div>- \"Add Note\": this will add a new note for the currently selected node. note (or tab) name can be edited by double clicking it</div><div>- \"Copy Note\": this works at session level and will copy current note</div><div>- \"Paste Note\": to use this, please add a new note, click within it (so it has the focus), then click \"Paste Note\", which will paste the last saved note (via last \"Copy Note\")</div><div><br></div><div>you can use copy note/paste note to move note to different nodes</div>"
+              },
+              {
+                "tabName": "Export/import node",
+                "content": "<div>under main menu on the left:</div><div>- \"Export Node\": will save current selected node in localstorage, which remains between tippy web app start/close</div><div>- \"Import Node\": will append saved node to current selected node</div><div><br></div><div>this essentially can be used to move Node around within the same file, or to other file</div>"
+              }
+            ],
+            "expanded": true
+          },
+          {
+            "name": "advanced",
+            "children": [],
+            "notes": [
+              {
+                "tabName": "How to use template",
+                "content": "<div>template is custom HTML tag that can be used as specific format that user can edit content. I include some of the examples that I find on Internet, which user can also create their own (will cover in developer section).</div><div><br></div><div>to add a template, please click in the node where you like to add, then go to Tag menu and use \"Template Gallery\" to select template. you need to click \"X\" to close the gallery.</div><div><br></div><div>all the editing within the template will be saved. for template where there is \"+\" sign, it can be used to add another one underneath.&nbsp;</div><div><br></div><div>to save editing within template, please click mouse outside it so the content will be saved when it loses focus.</div><div><br></div><div>below is an example:</div><div><m-paper></m-paper></div>"
+              },
+              {
+                "tabName": "How to edit/run clojurescript",
+                "content": "<div>\"Cljs\" at the last one in editing panel (please see screenshot under user basic), is meant to edit/run clojurescript.&nbsp;</div><div><br></div><div>To add a \"Cljs\" panel, please type any text in a note, highlight it which will popup editing panel and then select cljis, that will add a clojurescript mini-editor underneath it.</div><div><br></div><div>Clojurescript min-editor uses Scittle behind the scene to run Clojure code. the mini-editor has basic code editing functionalities including highlight keywords. Please always use ctrl+shift+v to paste code.</div><div><br></div><div>below is a cljs hello world example:</div><div contenteditable=\"false\"><div id=\"hiddenCode\" code=\"(with-out-str\n  (println &quot;hello world&quot;))\n\" style=\"display: none;\"></div><mini-editor></mini-editor></div><br>"
+              }
+            ],
+            "expanded": true
+          }
+        ],
+        "notes": [],
+        "expanded": true
+      },
+      {
+        "name": "developer",
+        "children": [],
+        "notes": [],
+        "expanded": true
+      }
+    ],
+    "notes": [
+      {
+        "tabName": "to use demo.json",
+        "content": "<ul><li>Download Sample.json and demo.json from tippy home at GitHub.&nbsp;</li><li>Open Sample.json in tippy web app, navigate to Setting -&gt; autorun, then go to saveConfig note, and click run button. It saves entire Sample.json in localStorage, which contains some template examples, user configuration, and scripts to initialize template gallery.&nbsp;</li><li>Once it is saved, it will be picked up by next web app start. So please close tippy web app, restart it and open demo.json.&nbsp;</li><li>You should find additional menu items under main menu on the left side, as well as under Note/Tag menu. This will stay at tippy web app level.</li><li>You should see other content in demo.json</li></ul>"
+      }
+    ],
+    "expanded": true
+  }
+]
