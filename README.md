@@ -8,7 +8,7 @@ a local first note app with interesting and convenient features (growing):
 - react both in destop and mobile via vanjs
 - support of copy/paste note within the same file, or export/import cross files (use menu)
 - support of clojurescript via scittle with basic code editing/highlighting functions
-- support of template (try example: download Sample.json, open it in the web app, and navigate to Setting/autorun then go to saveConfig note, click run button, and reload the webapp and use tag menu)
+- support of template (see below how to use demo.json to try)
 - very customizable via clojurescript (see Sample.json for example...will elaborate more in future)
 
 ![screenshot](tippy.png)
