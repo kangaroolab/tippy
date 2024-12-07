@@ -74,7 +74,7 @@
           },
           {
             name: 'codeblock',
-            icon: '<b>Cljs</b>',
+            icon: '<b>&#x1F4DD;</b>',
             title: 'codeblock',
             result: () => addNotebook()
           }
