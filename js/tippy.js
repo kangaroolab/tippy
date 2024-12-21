@@ -383,7 +383,7 @@
                                   if (selection.toString().length > 0) {
                                     const range = selection.getRangeAt(0);
                                     const rect = range.getBoundingClientRect();
-                                    actionBar.style.top = `${rect.top + window.scrollY - actionBar.offsetHeight + 25}px`;
+                                    actionBar.style.top = `${rect.top == 0 ? 60 : rect.top + window.scrollY - actionBar.offsetHeight + 25}px`;
                                     actionBar.style.left = `${rect.left + window.scrollX + 50}px`;
                                     actionBar.style.display = 'block';
                                   } else {
