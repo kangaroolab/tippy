@@ -379,7 +379,8 @@
                                 
                                 editorContent.addEventListener('pointerup', () => {
                                   const selection = window.getSelection();
-                                  if (!selection.isCollapsed) {
+                                  //if (!selection.isCollapsed) {
+                                  if (selection.toString().length > 0) {
                                     const range = selection.getRangeAt(0);
                                     const rect = range.getBoundingClientRect();
                                     actionBar.style.top = `${rect.top + window.scrollY - actionBar.offsetHeight + 25}px`;
