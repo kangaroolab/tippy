@@ -388,3 +388,11 @@
         .dropdown-nav .dropdown:hover .dropdown-content {
               display: block;
           }
+
+        @media print {
+            * { overflow: visible !important; } 
+            @page { 
+                size: A4; /* Specify the page size */ 
+                margin: 0mm; /* Set margin to zero specifically */ 
+            } 
+        }
